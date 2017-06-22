@@ -56,6 +56,5 @@ class ViewController: UIViewController {
         }
     }
 }
-//: **Cntl** + **I** = it will re-indent everything for you.
-
+//: **Cntl** + **I** = it will re-indent everything for you.  
 //: [Next](@next)
