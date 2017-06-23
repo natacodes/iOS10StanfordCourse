@@ -15,12 +15,13 @@ class ViewController: UIViewController {
     var userIsInTheMiddleOfTyping: Bool = false
     
     @IBAction func touchDigit(_ sender: UIButton) {
-        let digit = sender.currentTitle!
+        let button = sender.currentTitle!
+        
         if userIsInTheMiddleOfTyping {
             let textCurrentlyInDisplay = displayLabel.text!
-            displayLabel.text = textCurrentlyInDisplay + digit
+            displayLabel.text = textCurrentlyInDisplay + button
         } else {
-            displayLabel.text = digit
+            displayLabel.text = button
             userIsInTheMiddleOfTyping = true
         }
     }

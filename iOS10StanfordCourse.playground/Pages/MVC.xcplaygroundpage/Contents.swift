@@ -86,15 +86,42 @@ struct CalculatorBrain {
         case unaryOperation((Double) -> Double)
     }
 //: ## Closure syntax for defining functions "on the fly"
-    func changeSign(operand: Double) -> Double {
-        return -operand
+//: Closeres is a functions embedded rigth in line of code. 
+    // The progress from:
+    func myltiply(operand1: Double, operand2: Double) -> Double {
+        return operand1 * operand2
     }
-    let i = 27
-    var f: (Double) -> Double
-    f = changeSign
-    let x = f(81)
-
-//: ## *UIStackView*
-//: ## First peek at Autolayout (stick things to the edges)
+    // to:
+    Operation.binaryOperation({ $0 * $1 }),
+    // First step we have function and the element form dictionary
+    func myltiply(operand1: Double, operand2: Double) -> Double {
+        return operand1 * operand2
+    }
+    private var operations: Dictionary<String,Operation> = [
+        "*" : Operation.binaryOperation(myltiply),
+    ]
+    // Second step
+    func myltiply
+    private var operations: Dictionary<String,Operation> = [
+        "*" : Operation.binaryOperation((operand1: Double, operand2: Double) -> Double {
+            return operand1 * operand2
+            }
+        ),
+    ]
+    // 3
+    private var operations: Dictionary<String,Operation> = [
+        "*" : Operation.binaryOperation({(operand1: Double, operand2: Double) -> Double in
+            return operand1 * operand2
+            }
+        ),
+    ]
+    // 4
+    private var operations: Dictionary<String,Operation> = [
+        "*" : Operation.binaryOperation({(operand1, operand2) in return operand1 * operand2 }),
+    ]
+    // Done!
+    private var operations: Dictionary<String,Operation> = [
+        "*" : Operation.binaryOperation({ $0 * $1 }),
+    ]
 
 //: [Next](@next)
