@@ -20,6 +20,7 @@ struct CalculatorBrain {
         case unaryOperation((Double) -> Double)
         case binaryOperation((Double, Double) -> Double)
         case equals
+        case point
     }
     
     // Dictionary<keyType, ValueType>
@@ -35,7 +36,8 @@ struct CalculatorBrain {
         "÷" : Operation.binaryOperation({ $0 / $1 }),
         "+" : Operation.binaryOperation({ $0 + $1 }),
         "-" : Operation.binaryOperation({ $0 - $1 }),
-        "=" : Operation.equals
+        "=" : Operation.equals,
+        "." : Operation.point
     ]
     
     // Mutating - this metod can change the value of this struct.
@@ -55,14 +57,14 @@ struct CalculatorBrain {
                     accumulator = nil
                 }
             case .equals:
-                print("TEST case .equals performPendingBinaryOperation()")
                 performPendingBinaryOperation()
+            case .point:
+                
             }
         }
     }
     
     private mutating func performPendingBinaryOperation() {
-        print("TEST performPendingBinaryOperation")
         if pendingBinaryOperation != nil && accumulator != nil {
             accumulator = pendingBinaryOperation!.perform(with: accumulator!)
             pendingBinaryOperation = nil
